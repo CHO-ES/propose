@@ -29,20 +29,25 @@
   let slideIndex = 0;
   let slideTimer = null;
   
-  function startSlideshow() {
-	const slides = document.querySelectorAll(".slide");
-	if (slides.length === 0) return;
-	
-	slides.forEach(s => s.classList.remove("active"));
-	slides[0].classList.add("active");
-	slideIndex = 0;
-	
-	slideTimer = setInterval(() => {
-		slides[slideIndex].classList.remove("active");
-		slideIndex = (slideIndex + 1) % slides.length;
-		slides[slideIndex].classList.add("active");
-	}, 2000);
-  }
+  function initSlideshow() {
+  const slides = document.querySelectorAll(".slide");
+  if (slides.length === 0) return;
+
+  let index = 0;
+
+  slides.forEach((s, i) => {
+    s.classList.toggle("active", i === 0);
+  });
+
+  clearInterval(slideTimer);
+
+  slideTimer = setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 1800);
+}
+
   
   function answerYes() {
 	const bgm = document.getElementById("bgm");
@@ -82,7 +87,8 @@
         html: `
           <div class="container">
             <p>
-			같이 살아가면 서로 살아온 환경이 달라<br>
+			우리가 같이 살아가면<br>
+			서로 살아온 환경이 달라<br>
 			의견이 부딪혀 다투는 일도 있겠지
             </p>
             <button class="yes" onclick="nextPage()">다음</button>
@@ -112,8 +118,13 @@
 	  {
         html: `
           <div class="container">
+			<div class="slideshow">
+				<img src="img/map.jpg" class="slide active">
+				<img src="img/slide4.jpg" class="slide">
+				<img src="img/slide5.jpg" class="slide">
+			</div>
             <p>
-			이제는 연인이 아니라 가족으로 평생을 함께 하고싶어
+			우리 함께 다양한 곳을 같이다니면서
             </p>
             <button class="yes" onclick="nextPage()">다음</button>
           </div>
@@ -128,7 +139,21 @@
 				<img src="img/slide3.jpg" class="slide">
 			</div>
             <p>
-			앞으로도 나와 같이 달리자❤️
+			앞으로도 나와 같이 달리자
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },
+	  {
+        html: `
+          <div class="container">
+            <p>
+			많이 서툴고 부족해도<br>
+			항상 한비 옆에 있을께<br>
+			이런 나라도 괜찮으면<br>
+			이제는 연인이 아니라<br>
+			가족으로 평생을 함께 하고싶어
             </p>
             <button class="yes" onclick="nextPage()">다음</button>
           </div>
@@ -154,7 +179,7 @@
 
   function renderPage() {
 	document.getElementById("app").innerHTML = pages[pageIndex].html;
-	setTimeout(startSlideshow, 100);
+	initSlideshow();
 	}
 
   function nextPage() {
@@ -167,7 +192,7 @@
   function goMarry() {
 	document.getElementById("app").innerHTML = `
 		<div class="container">
-		<h1>😭💖 YES라서 정말 고마워 💖😭</h1>
+		<h1>😭💖 정말 고마워 💖😭</h1>
 		<img src="img/ring.png" class="result-img">
 		<p>평생 너를 웃게 할게</p>
 		<button class="yes" onclick="location.reload()">처음으로</button>
