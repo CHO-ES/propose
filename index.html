@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나의 결혼 프로포즈</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <audio id="bgm" src="music/proposemusic.mp3" loop></audio>
+  <div id="app">
+	<div class="container" id="home">
+		<h1>사랑하는 한비에게</h1>
+	
+		<p>
+			할 말이 있어
+			내 얘기 들어줄래?
+		</p>
+	
+		<button class="yes" onclick="answerYes()">응, 좋아</button>
+		<button class="no" onclick="answerNo()">미안해…</button>    
+	
+	</div>
+  </div>
+  <script>
+  let pages = [];
+  let pageIndex = 0;
+
+  let slideIndex = 0;
+  let slideTimer = null;
+  
+  function startSlideshow() {
+	const slides = document.querySelectorAll(".slide");
+	if (slides.length === 0) return;
+	
+	slides.forEach(s => s.classList.remove("active"));
+	slides[0].classList.add("active");
+	slideIndex = 0;
+	
+	slideTimer = setInterval(() => {
+		slides[slideIndex].classList.remove("active");
+		slideIndex = (slideIndex + 1) % slides.length;
+		slides[slideIndex].classList.add("active");
+	}, 2000);
+  }
+  
+  function answerYes() {
+	const bgm = document.getElementById("bgm");
+    bgm.volume = 0.4;
+    bgm.play().catch(() => {});
+	
+    pages = [      
+      {
+        html: `
+          <div class="container">
+            <div class="media">
+              <img src="img/20250704.jpg" class="result-img">
+            </div>
+            <p>
+              우리는 우연치 않은 만남으로 시작으로<br>
+              25년 6월 22일에 사귀기 시작했어
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },
+      {
+        html: `
+          <div class="container">
+            <div class="media">
+              <img src="img/20251210.jpg" class="result-img">
+            </div>
+            <p>
+				나의 삶은 한비를 만나기 전후로 나뉘는거 같아<br>
+				한비를 만나면서 더 좋은 사람이 되고 싶다고 생각했어
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },
+      {
+        html: `
+          <div class="container">
+            <p>
+			같이 살아가면 서로 살아온 환경이 달라<br>
+			의견이 부딪혀 다투는 일도 있겠지
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },
+	  {
+        html: `
+          <div class="container">
+            <p>
+			한비랑 함께라면 어떤 하루가 와도 괜찮을 것 같아
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },
+	  {
+        html: `
+          <div class="container">
+            <p>
+			그래서 나는 앞으로 계속 함께 하고싶어
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },
+	  {
+        html: `
+          <div class="container">
+            <p>
+			이제는 연인이 아니라 가족으로 평생을 함께 하고싶어
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },
+	  {
+        html: `
+          <div class="container">
+			<div class="slideshow">
+				<img src="img/slide1.jpg" class="slide active">
+				<img src="img/slide2.jpg" class="slide">
+				<img src="img/slide3.jpg" class="slide">
+			</div>
+            <p>
+			앞으로도 나와 같이 달리자❤️
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },
+      {
+		html: `
+			<div class="container">
+			<div class="media">
+				<img src="img/20251209.jpg" class="result-img">
+			</div>
+			<h1>나랑 결혼해줄래?</h1>
+			<button class="yes" onclick="goMarry()">그래</button>
+			<button class="no" onclick="answerNo()">아니</button>
+			</div>
+		`
+		}
+    ];
+
+    pageIndex = 0;
+    renderPage();
+  }
+
+  function renderPage() {
+	document.getElementById("app").innerHTML = pages[pageIndex].html;
+	setTimeout(startSlideshow, 100);
+	}
+
+  function nextPage() {
+    pageIndex++;
+    if (pageIndex < pages.length) {
+      renderPage();
+    }
+  }
+
+  function goMarry() {
+	document.getElementById("app").innerHTML = `
+		<div class="container">
+		<h1>😭💖 YES라서 정말 고마워 💖😭</h1>
+		<img src="img/ring.png" class="result-img">
+		<p>평생 너를 웃게 할게</p>
+		<button class="yes" onclick="location.reload()">처음으로</button>
+		</div>
+	`;
+	}
+
+  function answerNo() {
+    alert("다시 한 번만 생각해줄래… 🥹");
+  }
+</script>
+
+</body>
+</html>
