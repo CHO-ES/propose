@@ -13,12 +13,12 @@
 		<h1>사랑하는 한비에게</h1>
 	
 		<p>
-			할 말이 있어
+			할 말이 있어<br>
 			내 얘기 들어줄래?
 		</p>
 	
-		<button class="yes" onclick="answerYes()">응, 좋아</button>
-		<button class="no" onclick="answerNo()">미안해…</button>    
+		<button class="yes" onclick="answerYes()">응, 알겠어</button>
+		<button class="no" onclick="answerSorry()">아니</button>    
 	
 	</div>
   </div>
@@ -54,7 +54,18 @@
     bgm.volume = 0.4;
     bgm.play().catch(() => {});
 	
-    pages = [      
+    pages = [  
+	  {
+        html: `
+          <div class="container">
+            <p>
+			많이 미흡하고 서툴지만<br>			
+			천천히 봐줘..
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },    
       {
         html: `
           <div class="container">
@@ -77,7 +88,21 @@
             </div>
             <p>
 				나의 삶은 한비를 만나기 전후로 나뉘는거 같아<br>
-				한비를 만나면서 더 좋은 사람이 되고 싶다고 생각했어
+				한비를 만나면서<br>
+				더 좋은 사람이 되고 싶다고 생각했어
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },
+	  {
+        html: `
+          <div class="container">
+			<div class="media">
+              <img src="img/20251225.jpg" class="result-img">
+            <p>
+			한비와 함께라면 어떤 하루가 와도<br>
+			즐겁고 행복하게 보낼 수 있을거같아
             </p>
             <button class="yes" onclick="nextPage()">다음</button>
           </div>
@@ -94,22 +119,15 @@
             <button class="yes" onclick="nextPage()">다음</button>
           </div>
         `
-      },
+      },	  
 	  {
         html: `
           <div class="container">
             <p>
-			한비랑 함께라면 어떤 하루가 와도 괜찮을 것 같아
-            </p>
-            <button class="yes" onclick="nextPage()">다음</button>
-          </div>
-        `
-      },
-	  {
-        html: `
-          <div class="container">
-            <p>
-			그래서 나는 앞으로 계속 함께 하고싶어
+			싸우고 다퉈도<br>
+			서로 미워하지 않으면서<br>
+			나는 한비랑 앞으로도<br>
+			계속 함께 하고싶어
             </p>
             <button class="yes" onclick="nextPage()">다음</button>
           </div>
@@ -139,7 +157,7 @@
 				<img src="img/slide3.jpg" class="slide">
 			</div>
             <p>
-			앞으로도 계속 같이 달리고싶어
+			앞으로도 계속 같이 달리자
             </p>
             <button class="yes" onclick="nextPage()">다음</button>
           </div>
@@ -151,10 +169,22 @@
             <p>
 			많이 서툴고 부족해도<br>
 			항상 한비 옆에 있을께<br>
-			한비가 부르면 어디든 달려갈께<br>
-			이런 나라도 괜찮으면<br>
+			한비가 부르면 어디든 달려갈께<br>			
 			이제는 연인이 아니라<br>
 			가족으로 평생을 함께 하고싶어
+            </p>
+            <button class="yes" onclick="nextPage()">다음</button>
+          </div>
+        `
+      },
+	  {
+        html: `
+          <div class="container">
+            <p>
+			말 보다는 행동으로<br>
+			한비가 행복하게<br>
+			최선을 다 할께<br>
+			이런 나라도 괜찮으면...
             </p>
             <button class="yes" onclick="nextPage()">다음</button>
           </div>
@@ -167,7 +197,7 @@
 				<img src="img/20251209.jpg" class="result-img">
 			</div>
 			<h1>나랑 결혼해줄래?</h1>
-			<button class="yes" onclick="goMarry()">그래</button>
+			<button class="yes" onclick="goMarry()">그래 ❤️</button>
 			<button class="no" onclick="answerNo()">아니</button>
 			</div>
 		`
@@ -193,16 +223,20 @@
   function goMarry() {
 	document.getElementById("app").innerHTML = `
 		<div class="container">
-		<h1>😭💖 정말 고마워 💖😭</h1>
-		<img src="img/ring.png" class="result-img">
-		<p>평생 한비를 웃게 할게</p>
-		<button class="yes" onclick="location.reload()">처음으로</button>
+		<p>
+		고마워...❤️<br>
+		평생 한비를 웃게 할게<br>		
+		<h1>💖 사랑해 💖</h1>
+		</p>
 		</div>
 	`;
 	}
 
   function answerNo() {
     alert("다시 한 번만 생각해줄래… 🥹");
+  }
+  function answerSorry() {
+    alert("한번만 들어주면 안될까..?");
   }
 </script>
 
