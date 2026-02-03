@@ -18,7 +18,7 @@
         할 말이 있어<br>
         내 얘기 들어줄래?
       </p>
-      <button class="yes" onclick="answerYes()">응, 알겠어</button>
+      <button class="yes" onclick="answerYes()">그래</button>
       <button class="no" onclick="answerSorry()">아니</button>
     </div>
   </div>
@@ -56,6 +56,17 @@
       bgm.play().catch(() => {});
 
       pages = [
+		{
+          html: `
+            <div class="container">
+			   <p>
+				고마워 그럼 얘기해볼께
+              </p>
+              </p>
+              <button class="yes" onclick="nextPage()">다음</button>
+            </div>
+          `
+        },
         {
           html: `
             <div class="container">
@@ -76,7 +87,9 @@
                 <img src="img/20250704.jpg" class="result-img">
               </div>
               <p>
-                우리는 우연치 않은 만남을 시작으로<br>
+                우리의 첫 만남은<br>
+				서로가 만날거라고 생각도 못했지만<br>
+				긴 시간을 지나<br>
                 25년 6월 22일에 사귀기 시작했어
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
@@ -87,6 +100,7 @@
           html: `
             <div class="container">
               <p>
+				우리의 만난 기간이<br>
                 길다고 하면 길고<br>
                 짧다고 하면 짧은데
               </p>
@@ -290,7 +304,7 @@
 	
 		setTimeout(() => {
 		heart.remove();
-		}, 5000);
+		}, 2500);
 	}, 300);
 	}
 	
@@ -312,7 +326,7 @@
 
     container.appendChild(heart);
 
-    setTimeout(() => heart.remove(), 1200);
+    setTimeout(() => heart.remove(), 800);
   }
 
   for (let i = 0; i < 20; i++) {
@@ -329,7 +343,7 @@
 
     container.appendChild(sparkle);
 
-    setTimeout(() => sparkle.remove(), 1200);
+    setTimeout(() => sparkle.remove(), 800);
   }
 }
 
