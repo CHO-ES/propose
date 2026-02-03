@@ -216,6 +216,7 @@
           <h1>💖 사랑해 💖</h1>
         </div>
       `;
+	  startHeartEffect();
     }
 
     function answerNo() {
@@ -225,6 +226,31 @@
     function answerSorry() {
       alert("한번만 들어주면 안될까..?");
     }
+	
+	let heartTimer = null;
+
+	function startHeartEffect() {
+	const container = document.getElementById("heartEffect");
+	
+	clearInterval(heartTimer);
+	
+	heartTimer = setInterval(() => {
+		const heart = document.createElement("div");
+		heart.className = "heart";
+		heart.innerHTML = "❤️";
+	
+		heart.style.left = Math.random() * 100 + "vw";
+		heart.style.fontSize = 16 + Math.random() * 24 + "px";
+		heart.style.animationDuration = 3 + Math.random() * 2 + "s";
+	
+		container.appendChild(heart);
+	
+		setTimeout(() => {
+		heart.remove();
+		}, 5000);
+	}, 300);
+	}
+
   </script>
 
 </body>
