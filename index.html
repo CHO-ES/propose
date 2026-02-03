@@ -60,6 +60,8 @@
           html: `
             <div class="container">
               <p>
+				갑자기 이게 뭔가 싶겠지만<br>
+				마음을 전하고 싶어서 준비했어<br>
                 많이 미흡하고 서툴지만<br>
                 천천히 봐줘..
               </p>
@@ -81,6 +83,18 @@
             </div>
           `
         },
+		{
+          html: `
+            <div class="container">
+              </div>
+              <p>
+                길다고 하면 길고<br>
+                짧다고 하면 짧은데
+              </p>
+              <button class="yes" onclick="nextPage()">다음</button>
+            </div>
+          `
+        },
         {
           html: `
             <div class="container">
@@ -89,7 +103,8 @@
               </div>
               <p>
                 나의 삶은 한비를 만나기 전후로 나뉘는거 같아<br>
-                더 좋은 사람이 되고 싶다고 생각했어
+                한비랑 만나면서<br>
+				나는 더 좋은 사람이 되고 싶다고 생각했어
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
             </div>
@@ -124,9 +139,22 @@
           html: `
             <div class="container">
               <p>
-                그래도 나는<br>
-                한비랑 계속 함께 하고 싶어
+                싸우고 다퉈도<br>
+				서로 미워하지 않으면서<br>
+				나는 한비랑 앞으로도<br>
+				계속 함께 하고싶어
               </p>
+              <button class="yes" onclick="nextPage()">다음</button>
+            </div>
+          `
+        },
+		{
+          html: `
+            <div class="container"> 
+				<div class="media">
+				<img src="img/20250914.jpg" class="result-img">
+              </div>
+              <p>두손 꽉 잡고</p>
               <button class="yes" onclick="nextPage()">다음</button>
             </div>
           `
@@ -217,6 +245,16 @@
         </div>
       `;
 	  startHeartEffect();
+	  
+	  let count = 0;
+		const fire = setInterval(() => {
+			heartFirework(
+			window.innerWidth / 2,
+			window.innerHeight / 2
+			);
+			count++;
+			if (count > 5) clearInterval(fire);
+		}, 500);
     }
 
     function answerNo() {
@@ -250,6 +288,45 @@
 		}, 5000);
 	}, 300);
 	}
+	
+	function heartFirework(x, y) {
+  const container = document.getElementById("heartEffect");
+
+  for (let i = 0; i < 16; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart-burst";
+    heart.innerHTML = "💖";
+
+    const angle = Math.random() * 360;
+    const distance = 80 + Math.random() * 80;
+
+    heart.style.left = x + "px";
+    heart.style.top = y + "px";
+    heart.style.setProperty("--x", Math.cos(angle) * distance + "px");
+    heart.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+    container.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 1200);
+  }
+
+  for (let i = 0; i < 20; i++) {
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+
+    const angle = Math.random() * 360;
+    const distance = 60 + Math.random() * 60;
+
+    sparkle.style.left = x + "px";
+    sparkle.style.top = y + "px";
+    sparkle.style.setProperty("--x", Math.cos(angle) * distance + "px");
+    sparkle.style.setProperty("--y", Math.sin(angle) * distance + "px");
+
+    container.appendChild(sparkle);
+
+    setTimeout(() => sparkle.remove(), 1200);
+  }
+}
 
   </script>
 
