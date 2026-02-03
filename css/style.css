@@ -125,30 +125,32 @@ button.no {
 }
 
 #heartEffect {
-  display: none;
-}
-
-#heartEffect::before,
-#heartEffect::after {
-  content: "💙";
   position: fixed;
-  font-size: 24px;
-  opacity: 0.4;
-  animation: floatHeart 6s linear infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
 }
 
-#heartEffect::after {
-  left: 75%;
-  animation-delay: 3s;
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 20px;
+  color: #ff6fae;
+  animation: floatUp 4s linear forwards;
+  opacity: 0.8;
 }
 
-@keyframes floatHeart {
+@keyframes floatUp {
   0% {
-    bottom: -40px;
-    transform: translateX(0);
+    transform: translateY(0) scale(1);
+    opacity: 0.9;
   }
   100% {
-    bottom: 110%;
-    transform: translateX(-30px);
+    transform: translateY(-110vh) scale(1.6);
+    opacity: 0;
   }
 }
