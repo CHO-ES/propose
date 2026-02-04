@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>나의 결혼 프로포즈</title>
+  <title>한비에게 하는 프로포즈</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -56,17 +56,6 @@
       bgm.play().catch(() => {});
 
       pages = [
-		{
-          html: `
-            <div class="container">
-			   <p>
-				고마워 그럼 얘기해볼께
-              </p>
-              </p>
-              <button class="yes" onclick="nextPage()">다음</button>
-            </div>
-          `
-        },
         {
           html: `
             <div class="container">
@@ -74,7 +63,7 @@
 				갑자기 이게 뭔가 싶겠지만<br>
 				마음을 전하고 싶어서 준비했어<br>
                 많이 미흡하고 서툴지만<br>
-                천천히 봐줘..
+                천천히 봐줘...
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
             </div>
@@ -127,7 +116,7 @@
           html: `
             <div class="container">
               <p>
-                결혼을 해서 우리가 같이 살아가면<br>
+                우리가 결혼을 해서 같이 살아가면<br>
 				서로 살아온 환경이 달라<br>
                 의견이 부딪혀 다투는 일도 있겠지
               </p>
@@ -154,7 +143,8 @@
                 <img src="img/20251225.jpg" class="result-img">
               </div>
               <p>
-                한비와 함께라면 어떤 하루가 와도<br>
+                어떤 하루가 와도<br>
+				한비와 함께라면<br>
                 즐겁고 행복하게 보낼 수 있을 거 같아
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
@@ -167,7 +157,7 @@
 				<div class="media">
 				<img src="img/20250914.jpg" class="result-img">
               </div>
-              <p>두손 꽉 잡고</p>
+              <p>두 손 꽉 잡고</p>
               <button class="yes" onclick="nextPage()">다음</button>
             </div>
           `
@@ -185,6 +175,19 @@
             </div>
           `
         },
+		{
+          html: `
+            <div class="container">
+              <div class="slideshow">
+                <img src="img/slide6.jpg" class="slide active">
+                <img src="img/slide7.jpg" class="slide">
+                <img src="img/slide8.jpg" class="slide">
+              </div>
+              <p>맛있는것도 많이 먹고</p>
+              <button class="yes" onclick="nextPage()">다음</button>
+            </div>
+          `
+        },
         {
           html: `
             <div class="container">
@@ -193,7 +196,7 @@
                 <img src="img/slide2.jpg" class="slide">
                 <img src="img/slide3.jpg" class="slide">
               </div>
-              <p>앞으로도 계속 같이 달리자</p>
+              <p>앞으로도 계속 재밌게 같이 달리자</p>
               <button class="yes" onclick="nextPage()">다음</button>
             </div>
           `
@@ -257,8 +260,8 @@
       document.getElementById("app").innerHTML = `
         <div class="container">
           <p>
-            고마워… ❤️<br>
-            평생 한비를 웃게 할게
+            고마워...❤️<br>
+            평생 한비를 행복하게 할게
           </p>
           <h1>💖 사랑해 💖</h1>
         </div>
