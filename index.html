@@ -82,6 +82,7 @@
                 25년 6월 22일에 사귀기 시작했어
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },
@@ -94,6 +95,7 @@
                 짧다고 하면 짧은데
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },
@@ -109,6 +111,7 @@
 				나는 더 좋은 사람이 되고 싶다고 생각했어
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },
@@ -121,6 +124,7 @@
                 의견이 부딪혀 다투는 일도 있겠지
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },
@@ -133,6 +137,7 @@
 				나는 한비랑 앞으로도 계속 함께 하고싶어<br>	
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },		
@@ -148,6 +153,7 @@
                 즐겁고 행복하게 보낼 수 있을 거 같아
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },
@@ -159,6 +165,7 @@
               </div>
               <p>두 손 꽉 잡고</p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },
@@ -172,6 +179,7 @@
               </div>
               <p>우리 함께 다양한 곳을 같이 다니면서</p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },
@@ -185,6 +193,7 @@
               </div>
               <p>맛있는것도 많이 먹고</p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },
@@ -198,6 +207,7 @@
               </div>
               <p>앞으로도 계속 재밌게 같이 달리자</p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },
@@ -212,6 +222,7 @@
 				한비의 남편으로 함께 하고싶어
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>
             </div>
           `
         },
@@ -225,6 +236,7 @@
 				이런 나라도 괜찮으면...
               </p>
               <button class="yes" onclick="nextPage()">다음</button>
+			  <button class="yes" onclick="prevPage()">이전</button>			  
             </div>
           `
         },
@@ -255,6 +267,11 @@
       pageIndex++;
       if (pageIndex < pages.length) renderPage();
     }
+	
+	function prevPage() {
+      pageIndex--;
+      if (pageIndex < pages.length) renderPage();
+    }	
 
     function goMarry() {
       document.getElementById("app").innerHTML = `
@@ -354,6 +371,3 @@
 
 </body>
 </html>
-
-
-
